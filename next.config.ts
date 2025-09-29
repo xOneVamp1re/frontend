@@ -1,6 +1,5 @@
 const nextConfig = {
 	poweredByHeader: false,
-	allowedDevOrigins: ['192.168.8.83', 'localhost', '127.0.0.1'],
 	env: {
 		APP_URL: process.env.NEXT_PUBLIC_APP_URL,
 		APP_ENV: process.env.NEXT_PUBLIC_APP_ENV,
