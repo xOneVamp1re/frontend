@@ -1,4 +1,5 @@
-export const API_URL = `${process.env.APP_SERVER_URL}/api`;
+export const API_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/api`;
+
 export const getGenresUrl = (str: string) => `/genres${str}`;
 export const getUserUrl = (str: string) => `/users${str}`;
 export const getMoviesUrl = (str: string) => `/movies${str}`;
