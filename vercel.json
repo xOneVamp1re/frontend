@@ -1,0 +1,6 @@
+{
+	"env": {
+		"APP_SERVER_URL": "https://your-production-backend.com",
+		"NEXT_PUBLIC_SERVER_URL": "https://your-production-backend.com"
+	}
+}
