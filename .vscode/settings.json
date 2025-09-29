@@ -1,0 +1,38 @@
+{
+	"git.autofetch": true,
+	"cSpell.language": "en, ru",
+
+	"[html][css][scss][javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.tabSize": 2
+	},
+	"editor.tabSize": 2,
+	"scm.alwaysShowActions": true,
+	"editor.formatOnSave": true,
+	"terminal.integrated.defaultProfile.osx": "bash",
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"cSpell.words": [],
+	"liveServer.settings.port": 5501,
+
+	"css.validate": false,
+	"scss.validate": false,
+	"less.validate": false,
+
+	"tailwindCSS.includeLanguages": {
+		"scss": "css",
+		"javascript": "javascript",
+		"typescript": "javascript",
+		"typescriptreact": "javascript",
+		"html": "html"
+	},
+	"files.associations": {
+		"*.scss": "tailwindcss",
+		"*.css": "tailwindcss",
+		"*.js": "javascript",
+		"*.jsx": "javascriptreact",
+		"*.ts": "typescript",
+		"*.tsx": "typescriptreact"
+	}
+}

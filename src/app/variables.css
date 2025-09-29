@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+@import 'tailwindcss/preflight' layer(base);
+
+@theme {
+	/* Colors */
+	--color-primary: #e30b13;
+	/* Gray palette */
+	--color-gray-50: #f9fafb;
+	--color-gray-100: #f3f4f6;
+	--color-gray-200: #e5e7eb;
+	--color-gray-300: #d9dae8;
+	--color-gray-400: #9ca3af;
+	--color-gray-500: #999aa5;
+	--color-gray-600: #66676e;
+	--color-gray-700: #39393f;
+	--color-gray-800: #242529;
+	--color-gray-900: #191b1f;
+	--color-gray-950: #101215;
+
+	/* Yellow */
+	--color-yellow-700: #f5c521;
+
+	/* Spacing */
+	--spacing-layout: 2.75rem;
+
+	/* Font Size */
+	--font-size-2lg: 1.38rem;
+
+	/* Border Radius */
+	--radius-image: 0.5rem;
+	--radius-layout: 0.8rem;
+
+	/* Transition */
+	--transition-timing-function: ease-in-out;
+	--transition-duration: 200ms;
+
+	/* Z-Index */
+	--z-index-1: 1;
+	--z-index-2: 2;
+	--z-index-3: 3;
+
+	/* Keyframes */
+	--keyframes-fade: {
+    from: {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to: {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  --keyframes-scaleIn: {
+    from: {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to: {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Animation */
+  --animation-fade: fade 0.5s ease-in-out;
+	--animation-scaleIn: scaleIn 0.35s ease-in-out;
+}
+
+@layer utilities {
+	.text-shadow {
+		text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+	}
+
+	.outline-border-none {
+		outline: none;
+		border: none;
+	}
+
+	.flex-center-between {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.image-like-bg {
+		object-position: center;
+		object-fit: cover;
+		pointer-events: none;
+	}
+}
+
+@layer components {
+	.btn-primary {
+		background-color: #052f69;
+		color: #fff;
+		border-radius: 0.65rem;
+		transition: background-color 0.3s ease-in-out;
+	}
+
+	.btn-primary:hover {
+		background-color: #041e44;
+	}
+
+	.text-link {
+		text-underline-offset: 4px;
+		color: rgba(255, 255, 255, 0.9);
+		transition: text-decoration-color 0.3s ease-in-out;
+		text-decoration-line: underline;
+		text-decoration-color: rgba(255, 255, 255, 0.2);
+	}
+
+	.text-link:hover {
+		text-decoration-color: rgba(255, 255, 255, 0.9);
+	}
+
+	.air-block {
+		border-radius: 0.8rem;
+		background-color: #101215;
+		color: #fff;
+		box-shadow:
+			0 10px 15px -3px rgb(0 0 0 / 0.1),
+			0 4px 6px -4px rgb(0 0 0 / 0.1);
+	}
+}
+
+:root {
+	--foreground: #ffffff;
+	--bar-width: 20%;
+	--p-layout: 2.75rem;
+	--primary-color: #e30b13;
+}
+
+body {
+	@apply bg-gray-900;
+}
