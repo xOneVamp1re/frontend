@@ -1,0 +1,16 @@
+.button {
+	background-color: var(--error-bg-color, #fff5f5);
+}
+.form {
+	max-width: 500px;
+	margin-left: 45rem;
+	margin-top: 150px;
+	display: flex;
+	flex-direction: column;
+}
+.legend {
+	color: var(--text-primary, #333);
+	font-weight: 500;
+	font-size: 1.5rem;
+	align-self: center;
+}

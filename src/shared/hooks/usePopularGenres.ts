@@ -4,8 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import { IMenuItem } from '@/widgets/navigation/UI/NavigationItem';
 
-import { GenresService } from '../API/genre.services';
-import { getGenreUrl } from '../API/url.config';
+// import { GenresService } from '../API/genre.services';
+// import { getGenreUrl } from '../API/url.config';
 
 export default function usePopularGenres() {
 	const queryData = useQuery({
