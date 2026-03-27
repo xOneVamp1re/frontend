@@ -1,4 +1,4 @@
-'use client';
+/* 'use client';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -18,3 +18,4 @@ export default function usePopularGenres() {
 	});
 	return queryData;
 }
+ */
