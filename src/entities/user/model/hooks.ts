@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+/* import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { userApi } from '../api/userApi';
 import { User } from './interfaces';
@@ -47,3 +47,4 @@ export const useUpdateProfile = () => {
 		},
 	});
 };
+ */
