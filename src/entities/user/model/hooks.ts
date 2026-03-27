@@ -1,12 +1,14 @@
+export const userKeys = {
+	current: ['user'] as const,
+	detail: (id: string) => ['user', id] as const,
+};
+
 /* import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { userApi } from '../api/userApi';
 import { User } from './interfaces';
 
-export const userKeys = {
-	current: ['user'] as const,
-	detail: (id: string) => ['user', id] as const,
-};
+
 
 export const useUser = (userId?: string) => {
 	const queryKey = userId ? userKeys.detail(userId) : userKeys.current;
