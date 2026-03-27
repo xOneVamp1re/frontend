@@ -12,8 +12,8 @@ import { formFields } from '../const/formFields';
 import styles from './SingInUser.module.scss';
 
 export interface SingInFormData {
-	'email': string;
-	'password': string;
+	'email-signin': string;
+	'password-signin': string;
 }
 
 export const SingIn = () => {
@@ -28,7 +28,11 @@ export const SingIn = () => {
 
 	const onSubmit = (data: SingInFormData) => {
 		console.log(data);
-		loginMutation.mutate(data);
+		const loginUser = {
+			email: data['email-signin'],
+			password: data['password-signin'],
+		};
+		loginMutation.mutate(loginUser);
 	};
 
 	const validation: Record<keyof SingInFormData, RegisterOptions<SingInFormData, keyof SingInFormData>> = {
