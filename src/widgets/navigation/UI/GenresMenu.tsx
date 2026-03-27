@@ -1,4 +1,4 @@
-import usePopularGenres from '@/shared/hooks/usePopularGenres';
+/* import usePopularGenres from '@/shared/hooks/usePopularGenres';
 
 import { Menu } from '../Navigation';
 
@@ -10,3 +10,4 @@ export const GenresMenu = () => {
 		<Menu menu={{ title: 'Popular genres', items: data || [] }} />
 	);
 };
+ */
