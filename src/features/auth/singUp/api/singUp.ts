@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { api, queryKeys } from '@/shared/API/api';
+import { browserApi } from '@/shared/API/client/browser-client';
+import { queryKeys } from '@/shared/API/queryKeys';
 
-interface User {
+interface RegisterUser {
 	email: string;
 	password: string;
 	username: string;
@@ -13,7 +14,7 @@ interface UserRegisterResponse {
 	user: {
 		id: string;
 		email: string;
-		name: string;
+		username: string;
 		isAdmin: boolean;
 		favorites: string[];
 		createdAt: string;
@@ -24,13 +25,13 @@ interface UserRegisterResponse {
 export const useRegister = () => {
 	const queryClient = useQueryClient();
 
-	return useMutation<UserRegisterResponse, Error, User>({
+	return useMutation<UserRegisterResponse, Error, RegisterUser>({
 		mutationFn: userData => {
 			console.log(userData);
-			return api.post('users/register', { ...userData });
+			return browserApi.post('auth/register', { ...userData });
 		},
 		onSuccess: data => {
-			// localStorage.setItem('token', data.user.token);
+			console.log(data);
 			queryClient.setQueryData(queryKeys.user, data.user);
 		},
 	});

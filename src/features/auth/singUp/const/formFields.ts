@@ -10,31 +10,31 @@ export interface FormField {
 
 export const formFields: FormField[] = [
 	{
-		label: 'Username',
+		label: 'Имя пользователя',
 		type: 'text',
 		id: 'username',
-		placeholder: 'Username',
+		placeholder: 'имя пользователя',
 		autocomplete: 'username',
 	},
 	{
-		label: 'Email Address',
+		label: 'Ваш email-адрес',
 		type: 'email',
 		id: 'email',
-		placeholder: 'Email Address',
+		placeholder: 'Ваш email-адрес',
 		autocomplete: 'email',
 	},
 	{
-		label: 'Password',
+		label: 'Ваш пароль',
 		type: 'password',
 		id: 'password',
-		placeholder: 'Password',
+		placeholder: 'Ваш пароль',
 		autocomplete: 'new-password',
 	},
 	{
-		label: 'Repeat Password',
+		label: 'Повторите ваш пароль',
 		type: 'password',
 		id: 'repeat-password',
-		placeholder: 'Password',
+		placeholder: 'Ваш пароль еще раз',
 		autocomplete: 'new-password',
 	},
 ];

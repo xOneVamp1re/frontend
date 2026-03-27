@@ -1,13 +1,19 @@
-const nextConfig = {
+// next.config.ts
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
 	poweredByHeader: false,
 	env: {
 		APP_URL: process.env.NEXT_PUBLIC_APP_URL,
 		APP_ENV: process.env.NEXT_PUBLIC_APP_ENV,
 	},
 	sassOptions: {
-		silenceDeprecations: ['import'],
+		silenceDeprecations: ['legacy-js-api'],
 	},
-	async rewrites() {
+};
+
+export default nextConfig;
+/* 	async rewrites() {
 		const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4200';
 
 		console.log('Rewrites using server URL:', serverUrl);
@@ -34,7 +40,4 @@ const nextConfig = {
 				],
 			},
 		];
-	},
-};
-
-module.exports = nextConfig;
+	}, */

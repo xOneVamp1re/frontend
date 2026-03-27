@@ -1,0 +1,29 @@
+.dropdown {
+	display: inline-block;
+	position: relative;
+	&Button {
+		display: flex;
+		align-items: center;
+		gap: 13px;
+	}
+	&-image {
+		width: 15px;
+		height: 15px;
+	}
+	&Menu {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		justify-content: center;
+		width: 100%;
+		top: 0;
+		right: 0;
+		margin-top: 25px;
+		background-color: black;
+		gap: 0.5rem;
+		padding: 0.5rem 0;
+	}
+	&Item {
+		align-self: center;
+	}
+}
