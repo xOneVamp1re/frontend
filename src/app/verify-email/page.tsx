@@ -1,11 +1,6 @@
-// app/verify-code/page.tsx
-'use client';
+import { Suspense } from 'react';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-
-import { Suspense, useEffect, useState } from 'react';
-
-import { browserApi } from '@/shared/API/client/browser-client';
+import { VerifyMail } from '@/features/auth/verifyEmail/VerifyEmail';
 
 // app/verify-code/page.tsx
 
@@ -16,38 +11,10 @@ import { browserApi } from '@/shared/API/client/browser-client';
 // app/verify-code/page.tsx
 
 export default function VerifyCodePage() {
-	const router = useRouter();
-	const searchParams = useSearchParams();
-	const token = searchParams.get('token');
-	useEffect(() => {
-		const verifyEmail = async () => {
-			if (!token) {
-				/* 			setStatus('error');
-				setMessage('No verification token provided'); */
-				return;
-			}
-
-			try {
-				// ✅ Отправляем GET запрос с токеном
-				const data = browserApi.get(`/auth/verify-email?token=${encodeURIComponent(token)}`);
-				console.log(data);
-				router.replace('/');
-			} catch (error) {
-				console.log(error);
-				/* 		setStatus('error');
-				setMessage('Something went wrong. Please try again.'); */
-			}
-		};
-
-		verifyEmail();
-	}, [router, token]);
-
 	return (
 		<Suspense fallback={<div>loading...</div>}>
-			<div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
-				<h1 style={{ textAlign: 'center' }}>Enter Verification Code</h1>
-
-				{/* <form onSubmit={handleSubmit}>
+			<VerifyMail />
+			{/* <form onSubmit={handleSubmit}>
 				<div style={{ marginBottom: '15px' }}>
 					<input
 						type='email'
@@ -90,7 +57,6 @@ export default function VerifyCodePage() {
 					{loading ? 'Verifying...' : 'Verify Code'}
 				</button>
 			</form> */}
-			</div>
 		</Suspense>
 	);
 }
