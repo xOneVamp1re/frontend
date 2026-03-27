@@ -1,4 +1,4 @@
-type Theme = 'light' | 'dark';
+/* type Theme = 'light' | 'dark';
 
 interface ThemeState {
 	theme: Theme;
@@ -15,3 +15,4 @@ const getInitialTheme = (): Theme => {
 	const saved = localStorage.getItem('theme') as Theme;
 	return saved || getSystemTheme();
 };
+ */
