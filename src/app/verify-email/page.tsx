@@ -3,49 +3,9 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { browserApi } from '@/shared/API/client/browser-client';
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
-
-// app/verify-code/page.tsx
 
 // app/verify-code/page.tsx
 
@@ -83,10 +43,11 @@ export default function VerifyCodePage() {
 	}, [router, token]);
 
 	return (
-		<div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
-			<h1 style={{ textAlign: 'center' }}>Enter Verification Code</h1>
+		<Suspense fallback={<div>loading...</div>}>
+			<div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
+				<h1 style={{ textAlign: 'center' }}>Enter Verification Code</h1>
 
-			{/* <form onSubmit={handleSubmit}>
+				{/* <form onSubmit={handleSubmit}>
 				<div style={{ marginBottom: '15px' }}>
 					<input
 						type='email'
@@ -129,6 +90,7 @@ export default function VerifyCodePage() {
 					{loading ? 'Verifying...' : 'Verify Code'}
 				</button>
 			</form> */}
-		</div>
+			</div>
+		</Suspense>
 	);
 }
