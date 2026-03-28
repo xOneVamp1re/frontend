@@ -1,52 +1,33 @@
-export const userKeys = {
-	current: ['user'] as const,
-	detail: (id: string) => ['user', id] as const,
-};
+import { useQuery } from '@tanstack/react-query';
 
-/* import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { browserApi } from '@/shared/API/client/browser-client';
 
-import { userApi } from '../api/userApi';
 import { User } from './interfaces';
 
+export const userKeys = {
+	all: ['users'] as const,
 
+	current: () => ['user', 'current'] as const,
 
-export const useUser = (userId?: string) => {
-	const queryKey = userId ? userKeys.detail(userId) : userKeys.current;
-	return useQuery({
-		queryKey,
-		queryFn: () => {
-			if (userId) {
-				return userApi.getProfile(userId);
-			}
-			const currentUserId = localStorage.getItem('userId');
-			return userApi.getProfile(currentUserId!);
+	detail: (id: string) => ['user', id] as const,
+
+	// Список пользователей (с пагинацией)
+	list: (filters?: Record<string, unknown>) => ['users', 'list', filters] as const,
+
+	// Избранное пользователя
+	favorites: (userId: string) => ['user', userId, 'favorites'] as const,
+
+	// Безопасность пользователя
+	security: (userId: string) => ['user', userId, 'security'] as const,
+};
+
+export const useUser = () => {
+	return useQuery<User>({
+		queryKey: userKeys.current(),
+		queryFn: async () => {
+			const user = await browserApi.get<User>('/auth/me');
+			return user;
 		},
-		staleTime: 5 * 60 * 1000, // 5 минут
-		gcTime: 10 * 60 * 1000,
-		refetchOnWindowFocus: false,
+		staleTime: 5 * 60 * 1000,
 	});
 };
-export const useUserName = (userId?: string) => {
-	const { data } = useUser(userId);
-	return data?.user?.username;
-};
-
-export const useUpdateProfile = () => {
-	const queryClient = useQueryClient();
-
-	return useMutation<User, Error, Partial<User>>({
-		mutationFn: userApi.updateProfile,
-		onSuccess: () => {
-			// Просто инвалидируем текущего пользователя
-			queryClient.invalidateQueries({
-				queryKey: userKeys.current,
-			});
-
-			// Инвалидируем списки, если они есть в другом месте
-			queryClient.invalidateQueries({
-				queryKey: ['users'],
-			});
-		},
-	});
-};
- */

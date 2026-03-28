@@ -1,29 +1,87 @@
 .dropdown {
 	display: inline-block;
 	position: relative;
-	&Button {
+	/* margin-right: 2rem; */
+	&--open {
+		background-color: var(--bg-color-secondary);
+	}
+
+	&-button {
 		display: flex;
 		align-items: center;
 		gap: 13px;
+		/* background-color: aliceblue; */
+		padding: 0.3rem;
 	}
 	&-image {
-		width: 15px;
-		height: 15px;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		&--open {
+			background-color: var(--bg-color-secondary);
+		}
 	}
-	&Menu {
-		display: flex;
-		flex-direction: column;
+	&-menu {
+		width: 9rem;
 		position: absolute;
-		justify-content: center;
-		width: 100%;
-		top: 0;
-		right: 0;
-		margin-top: 25px;
-		background-color: black;
-		gap: 0.5rem;
+		/* width: 100%; */
+		top: 100%;
+		right: -95%;
+		background-color: var(--bg-color-secondary);
 		padding: 0.5rem 0;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		z-index: 150;
+
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-10px);
+		&--open {
+			animation: fadeIn 0.3s ease-out forwards;
+		}
+
+		&--closed {
+			animation: fadeOut 0.3s ease-out forwards;
+		}
+		&-list {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			gap: 0.3rem;
+			&-item {
+				margin-left: 1rem;
+				padding: 0.2rem;
+				display: flex;
+				gap: 0.3rem;
+				&-link {
+					color: var(--text-color-primary);
+				}
+			}
+		}
 	}
-	&Item {
-		align-self: center;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		visibility: visible;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+		visibility: visible;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-10px);
+		visibility: hidden;
 	}
 }

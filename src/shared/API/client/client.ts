@@ -73,9 +73,20 @@ apiClient.interceptors.request.use(
 
 // Response interceptor для refresh токена
 apiClient.interceptors.response.use(
-	response => {
+	async response => {
 		if (process.env.NODE_ENV === 'development') {
 			console.log('🟢 Browser API Response:', response.status, response.config.url);
+		}
+		const method = response.config.method?.toLowerCase();
+		const isMutating = ['post', 'put', 'patch', 'delete'].includes(method || '');
+
+		if (isMutating && response.status === 200 && !isServer) {
+			try {
+				await csrfManager.refreshToken();
+				console.log('🔄 CSRF token refreshed after successful request');
+			} catch (err) {
+				console.warn('Failed to refresh CSRF token:', err);
+			}
 		}
 		return response;
 	},

@@ -10,11 +10,10 @@ import { IApiClient } from '../types';
 export const createServerClient = cache(async () => {
 	const cookieStore = await cookies();
 	const allCookies = cookieStore.getAll();
-	// const appUrl = 'http://localhost:3000';
-	// const baseURL = `${appUrl}/api`;
+
 	const baseURL =
 		process.env.NODE_ENV === 'production'
-			? process.env.PROD_API_URL || 'https://your-production-domain.com/api'
+			? process.env.PROD_API_URL || 'https://no-syntax-error.up.railway.app/api'
 			: 'http://localhost:3000/api';
 	const serverClient = axios.create({
 		baseURL,

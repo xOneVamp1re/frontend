@@ -16,7 +16,7 @@ export const useLogout = () => {
 			router.push('/');
 		},
 		onError: error => {
-			console.log('Ошибка логина: ', error);
+			console.log('Ошибка выхода: ', error);
 		},
 	});
 };

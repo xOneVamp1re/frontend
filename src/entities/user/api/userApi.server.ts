@@ -6,10 +6,8 @@ export const userApiServer = {
 	getProfile: async (userId: string) => {
 		const response = await serverApi.get<UserResponse>(`/users/profile/${userId}`);
 
-		// Логируем структуру ответа
-
 		console.log('🔍 Full response structure:', JSON.stringify(response, null, 2));
 
-		return response.user; // fallback
+		return response.user;
 	},
 };

@@ -10,6 +10,15 @@
 .navigation {
 	display: flex;
 	gap: 1rem;
+	&-list {
+		display: flex;
+		gap: 1rem;
+		&-item {
+			&-link {
+				color: var(--text-color-primary);
+			}
+		}
+	}
 }
 .profile {
 	margin-left: auto;

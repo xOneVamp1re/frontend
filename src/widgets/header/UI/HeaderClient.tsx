@@ -1,12 +1,30 @@
 'use client';
 
+import { MaterialIcon } from '@/shared/types/icons.types';
+
 import { LogoutUser } from '@/features/auth/logout/UI/LogoutUser';
 import { ProfileMenu } from '@/features/profile/profileMenu/UI/ProfileMenu';
 
-export const HeaderProfile = ({ user }) => {
+export const HeaderClient = ({ user }) => {
 	return (
-		<ProfileMenu username={user.username}>
-			<LogoutUser />
-		</ProfileMenu>
+		<>
+			<MaterialIcon name='MdSunny' />
+			<MaterialIcon name='MdBedtime' />
+			<MaterialIcon name='MdNotifications' />
+			<ProfileMenu username={user.username}>
+				<LogoutUser />
+			</ProfileMenu>
+		</>
 	);
 };
+
+/* (
+	<Link href='/notifications' className={styles.notifications}>
+		Уведомления
+	</Link>
+) |
+	(
+		<button className={styles.themeToggle} aria-label='Переключить тему'>
+			🌙
+		</button>
+	); */

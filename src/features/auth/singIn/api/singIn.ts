@@ -1,4 +1,3 @@
-// entities/user/model/hooks/useLogin.ts
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
@@ -18,6 +17,8 @@ interface UserLoginResponse {
 		id: string;
 		username?: string;
 		email: string;
+		avatarKey?: string | null;
+		isAdmin?: boolean;
 	};
 }
 
@@ -36,42 +37,30 @@ export const useLogin = () => {
 			console.log('🟢 Login successful:', data);
 
 			try {
-				// 2. Сохраняем данные в React Query кэш
-				/* 				queryClient.setQueryData(userKeys.detail(data.user.id), data.user);
-				queryClient.setQueryData(userKeys.current, data.user); */
+				/* 			const userId = {
+					id: data.user.id,
+					email: data.user.email,
+				};
+				queryClient.setQueryData(userKeys.current(), userId); */
 
-				// 3. Опционально: предзагружаем полные данные профиля
-				// Но не ждём этого перед редиректом
-				queryClient
-					.prefetchQuery({
-						queryKey: userKeys.detail(data.user.id),
-						queryFn: () => userApi.getProfile(data.user.id),
-					})
-					.catch(error => {
-						console.error('Background prefetch failed:', error);
-					});
+				await queryClient.prefetchQuery({
+					queryKey: userKeys.detail(data.user.id),
+					queryFn: () => userApi.getProfile(data.user.id),
+				});
 
-				console.log('✅ Profile data prefetched successfully');
+				const fullUser = queryClient.getQueryData(userKeys.detail(data.user.id));
+				console.log('✅ Full user loaded:', fullUser);
 
-				// 3. Сохраняем базовые данные пользователя
-				queryClient.setQueryData(userKeys.current, data.user);
-
-				// 4. Редирект на /home (данные уже в кэше!)
 				console.log('🚀 Redirecting to /home');
 				router.replace('/home');
-
-				// 4. Делаем редирект
-				// router.replace('/home');
 			} catch (error) {
-				console.error('Error during login flow:', error);
-				// Даже если что-то пошло не так, пробуем редирект
-				// router.replace('/home');
+				console.error('❌ Error during login flow:', error);
+				router.replace('/home');
 			}
 		},
 
 		onError: (error: Error) => {
 			console.log('🔴 Login error:', error.message);
-			// Здесь можно показать уведомление об ошибке
 		},
 	});
 };

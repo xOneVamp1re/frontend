@@ -4,6 +4,7 @@
 	/* Background */
 
 	--bg-color-primary: var(--color-snowwhite);
+	--bg-color-primary-accent: var(--color-snowwhite);
 	--bg-color-secondary: var(--color-red-50);
 	--bg-color-active: var(--color-red-50);
 
@@ -29,12 +30,13 @@
 	--placeholder-color: var(--color-red-50);
 
 	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-	/* Dark theme variables (переименованы, убран суффикс -dark) */
+	/* Dark theme variables*/
 	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 	/* Background */
 
 	--bg-color-primary-dark: var(--color-jet);
+	--bg-color-primary-accent-dark: var(--color-richblack);
 	--bg-color-secondary-dark: var(--color-gunmetal);
 	--bg-color-active-dark: var(--color-slategray);
 
@@ -71,6 +73,7 @@
 	--color-gainsboro: rgba(220, 220, 220, 1);
 
 	--color-jet: rgba(18, 20, 22, 1);
+	--color-richblack: rgba(22, 23, 27, 1);
 	--color-gunmetal: rgba(32, 35, 39, 1);
 
 	--color-slategray: rgba(60, 65, 73, 1);
@@ -174,6 +177,7 @@
 
 .dark {
 	--bg-color-primary: var(--bg-color-primary-dark);
+	--bg-color-primary-accent: var(--bg-color-primary-accent-dark);
 	--bg-color-secondary: var(--bg-color-secondary-dark);
 	--bg-color-active: var(--bg-color-active-dark);
 
@@ -196,6 +200,7 @@
 @media (prefers-color-scheme: dark) {
 	:root:not(.light) {
 		--bg-color-primary: var(--bg-color-primary-dark);
+		--bg-color-primary-accent: var(--bg-color-primary-accent-dark);
 		--bg-color-secondary: var(--bg-color-secondary-dark);
 		--bg-color-active: var(--bg-color-active-dark);
 

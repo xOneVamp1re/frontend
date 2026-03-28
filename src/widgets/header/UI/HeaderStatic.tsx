@@ -1,26 +1,11 @@
-// widgets/header/UI/HeaderStatic.tsx
 import Image from 'next/image';
 import Link from 'next/link';
 
 import logo from '@/shared/assets/images/logo-png.png';
 
-import { LogoutUser } from '@/features/auth/logout/UI/LogoutUser';
-import { ProfileMenu } from '@/features/profile/profileMenu/UI/ProfileMenu';
-
+import { navigationList } from '../const/Header';
 import styles from './Header.module.scss';
-import { HeaderProfile } from './HeaderClient';
-
-/* interface User {
-	id: string;
-	username?: string;
-	email?: string;
-	avatar?: string;
-	isAdmin?: boolean;
-}
-
-interface HeaderStaticProps {
-	user?: User | null;
-} */
+import { HeaderClient } from './HeaderClient';
 
 export const HeaderStatic = ({ user }) => {
 	return (
@@ -28,34 +13,23 @@ export const HeaderStatic = ({ user }) => {
 			<Link href='/' className={styles.logo}>
 				<Image src={logo} alt='Логотип компании' width={120} height={52} priority />
 			</Link>
-
 			<nav className={styles.navigation}>
-				<Link href='/learning'>Обучение</Link>
-				<Link href='/testing'>Тестирование</Link>
-				<Link href='/sandbox'>Песочница</Link>
-				<Link href='/news'>Новости</Link>
+				<ul className={styles['navigation-list']}>
+					{navigationList.map(el => (
+						<li key={el.href} className={styles['navigation-list-item']}>
+							<Link className={styles['navigation-list-item-link']} href={el.href}>
+								{el.label}
+							</Link>
+						</li>
+					))}
+				</ul>
 			</nav>
 
 			<div className={styles.profile}>
 				<div className={styles.search}>
 					<input type='search' placeholder='Поиск вопросов и задач...' aria-label='Поиск' />
 				</div>
-
-				<Link href='/notifications' className={styles.notifications}>
-					Уведомления
-				</Link>
-
-				{user ? (
-					<HeaderProfile user={user} />
-				) : (
-					<Link href='/login' className={styles.loginBtn}>
-						Войти
-					</Link>
-				)}
-
-				<button className={styles.themeToggle} aria-label='Переключить тему'>
-					🌙
-				</button>
+				{user && <HeaderClient user={user} />}
 			</div>
 		</header>
 	);

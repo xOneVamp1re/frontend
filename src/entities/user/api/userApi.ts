@@ -1,10 +1,11 @@
 import { browserApi } from '@/shared/API/client/browser-client';
 
-import { User } from '../model/interfaces';
+import { UserResponse } from '../model/interfaces';
 
 export const userApi = {
-	getProfile: (userId: string) => {
+	getProfile: async (userId: string) => {
 		console.log('Fetching profile for:', userId);
-		return browserApi.get<User>(`/users/profile/${userId}`);
+		const response = await browserApi.get<UserResponse>(`/users/profile/${userId}`);
+		return response.user;
 	},
 };

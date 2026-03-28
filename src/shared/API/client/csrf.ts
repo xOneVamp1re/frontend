@@ -154,6 +154,14 @@ class CSRFManager {
 		}
 	}
 
+	async refreshToken(): Promise<string> {
+		console.log('🔄 Refreshing CSRF token...');
+		this.reset();
+		const newToken = await this.getToken();
+		console.log('✅ CSRF token refreshed');
+		return newToken;
+	}
+
 	reset() {
 		this.token = null;
 		this.lastFetched = null;
